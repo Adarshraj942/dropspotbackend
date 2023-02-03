@@ -4,15 +4,18 @@ const ProductSchema=mongoose.Schema(
     {
         name:{
             type:String,
-            required:true,
+           
         },
         price:{
             type:Number,
-            required:true,
+       
         },
         desc:{
             type:String,
            
+        },
+        targetedCountry:{
+            type:String,
         },
         
         quantity:{
@@ -30,7 +33,7 @@ const ProductSchema=mongoose.Schema(
         EstimatedProcessingTime:{
             type:String
         },
-        SPU:{
+        sku:{
             type:String
         },
         ProductAttributes:{
@@ -47,6 +50,12 @@ const ProductSchema=mongoose.Schema(
         image2:String,
         image3:String,
         image4:String,
+        title:String,
+        height:String,
+        weight:String,
+        deapth:String,
+        width:String,
+
 
   
         

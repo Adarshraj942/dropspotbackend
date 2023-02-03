@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const WishlistSchema=mongoose.Schema(
+const CartSchema=mongoose.Schema(
     {
         OwnerId:{
             type:String,
@@ -15,6 +15,6 @@ const WishlistSchema=mongoose.Schema(
     {timestamps:true}
 )
 
-const WishlistModel=mongoose.model("Wishlist",WishlistSchema);
+const CartModel=mongoose.model("Cart",CartSchema);
 
-export default WishlistModel;
+export default CartModel;

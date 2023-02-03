@@ -21,9 +21,14 @@ export const addProduct=async(req,res)=>{
 
 export const addBulkProduct=async(req,res)=>{
   console.log("haiii");
+  console.log("kaiii",req.body);
+  // const beta =await productModel.insertMany(req.body)
+        
+  //       res.status(200).json({beta}) 
   try {
-    const {data}=req.body
-   const beta=await productModel.insertMany(data)
+    console.log("maiii");
+    // const {data}=req.body
+   const beta =await productModel.insertMany(req.body)
         
         res.status(200).json({beta}) 
   } catch (error) {

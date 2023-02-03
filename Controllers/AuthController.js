@@ -1,4 +1,6 @@
 import UserModel from "../Models/userModel.js";
+import WishlistModel from "../Models/userModel.js";
+import CartModel from "../Models/userModel.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
@@ -18,10 +20,20 @@ export const registerUser=async (req,res)=>{
         return res.status(400).json({message:"username already exist"})
     }
      const user= await newUser.save();
+
+     const wishlist=WishlistModel({ownerId:user._id})
+     await wishlist.save()
+     const cart=CartModel({ownerId:user._id})
+     await cart.save()
      const token=jwt.sign({
         username:user.email, id:user._id
      },process.env.JWT_KEY,{expiresIn:'1h'})
+
+
+
      res.status(200).json({user,token});
+
+
    } catch (error) {
       res.status(500).json({message:error.message})
    }

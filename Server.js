@@ -31,7 +31,9 @@ mongoose.connect(process.env.MONGO_DB,
        console.log(err);
     })
 
-
+app.get("/",(req,res)=>{
+    res.send("hello ")
+})
     app.use("/auth",AuthRoute)  
     app.use("/product",ProductRoute) 
     app.use("/wishlist",WishlistRoute) 
