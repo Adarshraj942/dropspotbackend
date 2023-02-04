@@ -10,6 +10,12 @@ export const getWishlist=async(req,res)=>{
   }
 }
 
+
+
+
+
+
+
 export const addToWishlist=async(req,res)=>{
     console.log("haiii");
     try {
