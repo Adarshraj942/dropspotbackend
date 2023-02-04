@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const WishlistSchema=mongoose.Schema(
     {
-        OwnerId:{
+        ownerId:{
             type:String,
             required:true,
         },

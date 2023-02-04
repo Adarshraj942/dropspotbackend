@@ -31,7 +31,7 @@ mongoose.connect(process.env.MONGO_DB,
        console.log(err);
     })
 
-app.get("/",(req,res)=>{
+app.get("/test",(req,res)=>{
     res.send("hello ")
 })
     app.use("/auth",AuthRoute)  
