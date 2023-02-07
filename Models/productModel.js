@@ -6,6 +6,12 @@ const ProductSchema=mongoose.Schema(
             type:String,
            
         },
+        category:{
+            type:String
+        },
+        subCategory:{
+           type:String  
+        },
         price:{
             type:Number,
        
