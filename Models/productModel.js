@@ -54,6 +54,16 @@ const ProductSchema=mongoose.Schema(
         Lists:{
             type:Number
         },
+
+        sizeVariation:{
+          type:Array
+        },
+
+        colorVariation:{
+           type:Array
+        },
+
+        
         image0:String,
         image1:String,
         image2:String,

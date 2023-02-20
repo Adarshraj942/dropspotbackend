@@ -69,7 +69,9 @@ export const editProduct=async(req,res)=>{
 export const allProducts=async(req,res)=>{
     try {
        const data=await productModel.find()
-       res.status(200).json(data)
+       const beta= data.slice(0,15)
+       console.log(beta.length);
+       res.status(200).json(beta)
     } catch (error) {
       res.status(500).json(error)
     }
@@ -102,4 +104,18 @@ export const deleteProduct=async(req,res)=>{
     }
 }
 
+export const addVarient=async(req,res)=>{
+  console.log("varient");
+  try {
+   const {productId,type1,data}=req.body
+   const bata=await productModel.findByIdAndUpdate({productId},{$push:{type1:data}},{new:True})
 
+   if(data){
+    res.status(200).json(bata)
+   }else{
+    res.status(400).json("not updated")
+   }
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
