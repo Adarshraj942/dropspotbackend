@@ -25,16 +25,25 @@ export const addToWishlist=async(req,res)=>{
      if(wishlist){
       let pro={
         product:req.body.productId,
-        quantity:req.body.quantity
+        quantity:req.body.quantity,
+        price:req.body.price,
+        date:req.body.date,
+        image:req.body.image,
+        name:req.body.name
       }
     const cart =await WishlistModel.findOneAndUpdate({ownerId:userId},{ $push:{products:pro}},{new:true})
           
           res.status(200).json({cart}) 
      }else{
       const newWishlist =WishlistModel({ownerId:userId})
+      console.log(req.body);
       let pro={
         product:req.body.productId,
-        quantity:req.body.quantity
+        quantity:req.body.quantity,
+        price:req.body.price,
+        date:req.body.date,
+        image:req.body.image,
+        name:req.body.name
       }
       newWishlist.products.push(pro)
 

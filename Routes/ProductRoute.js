@@ -7,7 +7,7 @@ const router =express.Router();
 
 router.post("/add",addProduct)
 router.put("/:id/edit",editProduct)
-router.get("/getproducts",allProducts)
+router.get("/getproducts/:id",allProducts)
 router.post("/addbulk",addBulkProduct)
 
 

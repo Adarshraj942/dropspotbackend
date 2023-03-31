@@ -27,6 +27,7 @@ const UserSchema=mongoose.Schema(
             type:Boolean,
             default:true
         },
+        
         profilePicture:String,
       
         about:String,

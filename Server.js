@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv"
 import cors from "cors"
 
-
+import ShopifyRoute from "./Routes/ShopifyRoute.js"
 import AuthRoute from "./Routes/AuthRoute.js"
 import ProductRoute from "./Routes/ProductRoute.js"
 import WishlistRoute from "./Routes/WishListRoute.js"
@@ -12,6 +12,7 @@ import ConnectRoute from "./Routes/ConnectRoute.js"
 import QueeRoute from "./Routes/QueeRoute.js"
 import ListRoute from "./Routes/ListRoute.js"
 import UploadRoute from "./Routes/UploadRoute.js"
+import orderRoute from "./Routes/OrderRoute.js"
 const app=express();
 
 app.use(express.static("public"))
@@ -37,12 +38,15 @@ app.get("/test",(req,res)=>{
     app.use("/auth",AuthRoute)  
     app.use("/product",ProductRoute) 
     app.use("/wishlist",WishlistRoute) 
-    // app.use("/order",AuthRoute) 
+      app.use("/order",orderRoute) 
      app.use("/payment",AuthRoute) 
     // app.use("/track",AuthRoute) 
     app.use("/connect",ConnectRoute)
     app.use("/list",ListRoute)
     app.use("/quee",QueeRoute)
     app.use('/upload',UploadRoute)
+    app.use("/shoipifyconnection", ShopifyRoute)
+
+
 
     

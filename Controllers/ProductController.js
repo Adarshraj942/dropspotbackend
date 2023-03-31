@@ -68,8 +68,11 @@ export const editProduct=async(req,res)=>{
 
 export const allProducts=async(req,res)=>{
     try {
+      const page=req.params.id
+      console.log(page);
+      let le=page*15
        const data=await productModel.find()
-       const beta= data.slice(0,15)
+       const beta= data.slice(0,le)
        console.log(beta.length);
        res.status(200).json(beta)
     } catch (error) {
@@ -107,14 +110,39 @@ export const deleteProduct=async(req,res)=>{
 export const addVarient=async(req,res)=>{
   console.log("varient");
   try {
-   const {productId,type1,data}=req.body
-   const bata=await productModel.findByIdAndUpdate({productId},{$push:{type1:data}},{new:True})
+   const {productId,type }=req.body
+   
+   console.log(type);
+   if(type==="colorVariation"){
+    console.log("heyy");
+    const zeta={
+        color:req.body.color,
+        price:req.body.price
+    }
 
-   if(data){
+    const bata = await productModel.findOneAndUpdate({_id:productId},{ $push:{colorVariation:zeta}},{new:true})
+   if(bata){
     res.status(200).json(bata)
    }else{
     res.status(400).json("not updated")
    }
+   } else  if(type==="sizeVariation"){
+    console.log("heyy");
+    const zeta={
+        size:req.body.size,
+        price:req.body.price
+    }
+
+    const bata = await productModel.findOneAndUpdate({_id:productId},{ $push:{sizeVariation:zeta}},{new:true})
+   if(bata){
+    res.status(200).json(bata)
+   }else{
+    res.status(400).json("not updated")
+   }
+   }
+  
+   
+  
   } catch (error) {
     res.status(500).json(error)
   }
