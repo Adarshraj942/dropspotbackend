@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const DisputeSchema=mongoose.Schema(
     {
-        ownerId:{
+        party1:{
             type:String,
             required:true,
         },
@@ -30,7 +30,10 @@ const DisputeSchema=mongoose.Schema(
         },
         subject:{
             type:String
-        },sellerId:{
+        },party2:{
+            type:String
+        },
+        disputeType:{
             type:String
         },
         response:{

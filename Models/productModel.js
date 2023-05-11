@@ -19,6 +19,9 @@ const ProductSchema=mongoose.Schema(
         maxPrice:{
             type:Number
         },
+        wholesalePrice:{
+            type:Number
+        },
         desc:{
             type:String,
            
@@ -61,6 +64,11 @@ const ProductSchema=mongoose.Schema(
 
         colorVariation:{
            type:Array
+        },
+        sellerId:{
+            type:String
+        },sellerName:{
+            type:String
         },
 
         

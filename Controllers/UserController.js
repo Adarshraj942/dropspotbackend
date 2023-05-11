@@ -21,12 +21,15 @@ export const getAllUser=async (req,res)=>{
 
 export const getUser=async (req,res)=>{
     const id=req.params.id
+    console.log(id);
     try {
         
         const user=await UserModel.findById(id)
         if(user)
         {
             const {password,...otherDetails}=user._doc
+             console.log(otherDetails);
+
             res.status(200).json(otherDetails)
         }
         else

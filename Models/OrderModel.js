@@ -27,7 +27,16 @@ const OrderSchema=mongoose.Schema(
             default:true
         },
         orderType:{
-          type:String
+          type:String,
+          default:false
+        },
+        preOrder:{
+           type:Boolean,
+           default:false
+        },
+        preOrderFullfill:{
+          type:String,
+          default:"PreOrderd"
         },
         pending:{
             type:Boolean,
@@ -53,6 +62,18 @@ const OrderSchema=mongoose.Schema(
             type:Boolean,
             default:false
         },
+        quantity:{
+            type:Number
+        },
+        sellerName:{
+            type:String 
+        },
+        image:{
+            type:String 
+        },
+        sellerId:{
+            type:String
+        }
 
     },
 

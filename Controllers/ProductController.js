@@ -72,9 +72,10 @@ export const allProducts=async(req,res)=>{
       console.log(page);
       let le=page*15
        const data=await productModel.find()
-       const beta= data.slice(0,le)
-       console.log(beta.length);
-       res.status(200).json(beta)
+      //  const beta= data.slice(0,le)
+      //  console.log(beta.length);
+      //  res.status(200).json(beta)
+       res.status(200).json(data)
     } catch (error) {
       res.status(500).json(error)
     }

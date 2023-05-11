@@ -6,6 +6,9 @@ const UserSchema=mongoose.Schema(
             type:String,
             required:true,
         },
+        accountType:{
+            type:String
+        },
         password:{
             type:String,
             required:true,
@@ -26,7 +29,9 @@ const UserSchema=mongoose.Schema(
         auth:{
             type:Boolean,
             default:true
-        },
+        },address:{
+            type:Array
+          },
         
         profilePicture:String,
       
@@ -35,6 +40,7 @@ const UserSchema=mongoose.Schema(
         worksAt:String,
         country:String,
         relationship:String,
+
       
 
     },

@@ -1,10 +1,10 @@
 import CartModel from "../Models/cartModel.js"
 
-export const getWishlist=async(req,res)=>{
+export const getCart=async(req,res)=>{
   try {
     const {userId}=req.body
-  const Wishlist =await CartModel.findOne({ownerId:userId})
-  res.status(200).json({Wishlist})
+  const Cart =await CartModel.findOne({ownerId:userId})
+  res.status(200).json({Cart})
   } catch (error) {
     res.status(500).json(error)
   }
@@ -20,8 +20,8 @@ export const addToWishlist=async(req,res)=>{
     console.log("haiii");
     try {
      const {userId}=req.body
-     const wishlist =await CartModel.findOne({ownerId:userId})
-     if(wishlist){
+     const Cart =await CartModel.findOne({ownerId:userId})
+     if(Cart){
       let pro={
         product:req.body.productId,
         quantity:req.body.quantity
@@ -30,16 +30,16 @@ export const addToWishlist=async(req,res)=>{
           
           res.status(200).json({cart}) 
      }else{
-      const newWishlist =CartModel({ownerId:userId})
+      const newCart =CartModel({ownerId:userId})
       let pro={
         product:req.body.productId,
         quantity:req.body.quantity
       }
-      newWishlist.products.push(pro)
+      newCart.products.push(pro)
 
-    const wishlist=  await newWishlist.save()
+    const Cart=  await newCart.save()
 
-      res.status(200).json({wishlist})
+      res.status(200).json({Cart})
      }
   
     } catch (error) {
