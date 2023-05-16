@@ -1,9 +1,10 @@
 import express from  "express"
+import { checkOrder, checksku } from "../Controllers/ListController.js";
 
 const router =express.Router();
 
-router.post("/add")
-router.post("/remove")
+router.post("/checksku",checksku)
+router.post("/checkorder",checkOrder)
 
 
 

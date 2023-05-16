@@ -13,6 +13,9 @@ const OrderSchema=mongoose.Schema(
             type:String,
             
         },
+        shopifyOrderId:{
+            type:String,
+        },
         deliveryAddress:{
             type:Object
         },
