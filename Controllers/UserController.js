@@ -2,7 +2,25 @@ import UserModel from "../Models/userModel.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 //get all users
+export const addDropshipperUrl=async(req,res)=>{
+  try {
+    const {urls,dropshipperId}=req.body
+    const data=await UserModel.findByIdAndUpdate({_id:dropshipperId},{$addToSet:{storeUrl:urls}},{new:true})
+    res.status(200).json({data})
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
 
+export const removeDropshipperUrl=async(req,res)=>{
+    try {
+      const {urls,dropshipperId}=req.body
+      const data=await UserModel.findByIdAndUpdate({_id:dropshipperId},{$pull:{storeUrl:urls}},{new:true})
+      res.status(200).json({data})
+    } catch (error) {
+      res.status(500).json(error)
+    }
+  }
 export const getAllUser=async (req,res)=>{
     try {
        let users=await UserModel.find() 

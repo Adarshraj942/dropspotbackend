@@ -9,6 +9,15 @@ const UserSchema=mongoose.Schema(
         accountType:{
             type:String
         },
+        beforeListing:{
+            type:Array
+        },
+        afterListing:{
+            type:Array
+        },
+        storeUrl:{
+            type:Array
+        },
         password:{
             type:String,
             required:true,

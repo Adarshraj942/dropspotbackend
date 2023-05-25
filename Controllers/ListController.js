@@ -1,5 +1,6 @@
 import productModel from "../Models/productModel.js"
 import OrderModel from "../Models/OrderModel.js";
+import UserModel from "../Models/userModel.js";
 export const checksku=async(req,res)=>{
     try {
         const {sku}=req.body
@@ -28,3 +29,25 @@ export const checkOrder=async(req,res)=>{
         res.status(500).json(error)
     }
 }
+
+export const addtoListingArray=async(req,res)=>{
+    try {
+        const {product,dropshipperId}=req.body
+        const data=await UserModel.findByIdAndUpdate({_id:dropshipperId},{$addToSet:{beforeListing:product}},{new:true})
+        res.status(200).json({data})
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
+export const afterListingArray=async(req,res)=>{
+    try {
+        const {product,dropshipperId}=req.body
+        const dataz=await UserModel.findByIdAndUpdate({_id:dropshipperId},{$pull:{beforeListing:product}},{new:true})
+        const data=await UserModel.findByIdAndUpdate({_id:dropshipperId},{$addToSet:{afterListing:product}},{new:true})
+        res.status(200).json({data})
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
