@@ -1,6 +1,7 @@
 import UserModel from "../Models/userModel.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import userWalletModel from "../Models/userWalletModel.js";
 //get all users
 export const addDropshipperUrl=async(req,res)=>{
   try {
@@ -11,7 +12,18 @@ export const addDropshipperUrl=async(req,res)=>{
     res.status(500).json(error)
   }
 }
+export const getUserWallet=async(req,res)=>{
 
+    const {userId}=req.body
+        try {
+            const wallet=await userWalletModel.findOne({ownerId:userId})
+            let totalUSable=wallet.winningAmount+wallet.userAddedAmount+wallet.defaultAmount
+            const data= await userWalletModel.findOneAndUpdate ({ownerId:userId},{$set:{totalUsableAmount:totalUSable}},{new:true})
+            res.status(200).json(data)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    } 
 export const removeDropshipperUrl=async(req,res)=>{
     try {
       const {urls,dropshipperId}=req.body

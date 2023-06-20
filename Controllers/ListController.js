@@ -1,5 +1,5 @@
 import productModel from "../Models/productModel.js"
-import OrderModel from "../Models/OrderModel.js";
+import shopifyOrderModel from "../Models/shopifyOrderModel.js";
 import UserModel from "../Models/userModel.js";
 export const checksku=async(req,res)=>{
     try {
@@ -18,7 +18,7 @@ export const checksku=async(req,res)=>{
 export const checkOrder=async(req,res)=>{
     try {
         const { shopifyOrderId}=req.body
-        const data=await OrderModel.findOne({ shopifyOrderId: shopifyOrderId})
+        const data=await shopifyOrderModel.findOne({ shopifyOrderId: shopifyOrderId})
         if(data){
             res.status(401)
               

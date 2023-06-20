@@ -1,13 +1,10 @@
 import mongoose from "mongoose";
 
-const OrderSchema=mongoose.Schema(
+const shopifyOrderSchema=mongoose.Schema(
     {
-        userId:{
+        dropshipperId:{
             type:String,
             required:true,
-        },
-        shipping:{
-         type:Object
         },
         productName:{
             type:String
@@ -15,6 +12,15 @@ const OrderSchema=mongoose.Schema(
         productId:{
             type:String,
             
+        },
+        shipping:{
+            type:Object
+        },
+        shippinCharge:{
+            type:Number
+        },
+        sku:{
+            type:String,
         },
         shopifyproductId:{
             type:String,
@@ -29,6 +35,9 @@ const OrderSchema=mongoose.Schema(
         price:{
             type:Number
         },
+        type:{
+            type:String
+        },
         paymentMod:{
             type:String
         },
@@ -40,25 +49,13 @@ const OrderSchema=mongoose.Schema(
           type:String,
           default:false
         },
-        preOrder:{
-           type:Boolean,
-           default:false
-        },
-        preOrderFullfill:{
-          type:String,
-          default:"PreOrderd"
-        },
-        shippingCharge:{
-            type:Number,
-            default:0
-        },
         pending:{
             type:Boolean,
             default:false
         },
         shopifyOrder:{
             type :Boolean,
-            default:false
+            default:true
         },
         processing:{
             type:Boolean,
@@ -80,11 +77,6 @@ const OrderSchema=mongoose.Schema(
             type:Boolean,
             default:false
         },
-        
-        returnreq:{
-            type:Boolean,
-            default:false
-        },
         quantity:{
             type:Number
         },
@@ -103,6 +95,6 @@ const OrderSchema=mongoose.Schema(
     {timestamps:true}
 )
 
-const OrderModel=mongoose.model("Orders",OrderSchema);
+const shopifyOrderModel=mongoose.model("shopifyOrders",shopifyOrderSchema);
 
-export default OrderModel;
+export default shopifyOrderModel;

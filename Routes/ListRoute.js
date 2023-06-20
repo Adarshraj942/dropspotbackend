@@ -5,6 +5,7 @@ import { addDropshipperUrl, removeDropshipperUrl } from "../Controllers/UserCont
 const router =express.Router();
 
 router.post("/checksku",checksku)
+router.post("/checkskushopify",checksku)
 router.post("/checkorder",checkOrder)
 router.post("/addtoListingArray",addtoListingArray)
 router.post("/addafterListingArray",afterListingArray)
@@ -14,3 +15,4 @@ router.post("/removestoreurl",removeDropshipperUrl)
 
 
 export default router
+

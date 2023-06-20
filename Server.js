@@ -13,7 +13,12 @@ import QueeRoute from "./Routes/QueeRoute.js"
 import ListRoute from "./Routes/ListRoute.js"
 import UploadRoute from "./Routes/UploadRoute.js"
 import orderRoute from "./Routes/OrderRoute.js"
+import preorderRoute from "./Routes/PreOrderRoute.js"
+import shopifyorderRoute from "./Routes//shopifyOrderRoute.js"
 import authMiddleWare from "./Middleware/authMiddleware.js";
+import pushNotifiactionRoute from "./Routes/pushNotifiactionRoute.js"
+import shippinRoute from "./Routes/shippingRoute.js"
+import PaymentRoute from "./Routes/PaymentRoute.js"
 const app=express();
 
 app.use(express.static("public"))
@@ -47,6 +52,10 @@ app.get("/test",(req,res)=>{
     app.use("/quee",QueeRoute)
     app.use('/upload',UploadRoute)
     app.use("/shoipifyconnection", ShopifyRoute)
+    app.use("/preorder", preorderRoute)
+    app.use("/shoipifyorder", shopifyorderRoute)
+    app.use("/pushNotifiactions",pushNotifiactionRoute)
+    app.use("/shipping",shippinRoute)
 
     app.use("/superAdmin/auth",AuthRoute)  
     app.use("/superAdmin/product",ProductRoute) 

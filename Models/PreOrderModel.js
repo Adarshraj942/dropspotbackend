@@ -1,13 +1,10 @@
 import mongoose from "mongoose";
 
-const OrderSchema=mongoose.Schema(
+const preOrderSchema=mongoose.Schema(
     {
         userId:{
             type:String,
             required:true,
-        },
-        shipping:{
-         type:Object
         },
         productName:{
             type:String
@@ -16,13 +13,10 @@ const OrderSchema=mongoose.Schema(
             type:String,
             
         },
-        shopifyproductId:{
-            type:String,
-            
-        },
-        shopifyOrderId:{
+        sku:{
             type:String,
         },
+        
         deliveryAddress:{
             type:Object
         },
@@ -48,18 +42,11 @@ const OrderSchema=mongoose.Schema(
           type:String,
           default:"PreOrderd"
         },
-        shippingCharge:{
-            type:Number,
-            default:0
-        },
         pending:{
             type:Boolean,
-            default:false
+            default:true
         },
-        shopifyOrder:{
-            type :Boolean,
-            default:false
-        },
+       
         processing:{
             type:Boolean,
             default:false
@@ -77,11 +64,6 @@ const OrderSchema=mongoose.Schema(
             default:false
         },
         return:{
-            type:Boolean,
-            default:false
-        },
-        
-        returnreq:{
             type:Boolean,
             default:false
         },
@@ -103,6 +85,6 @@ const OrderSchema=mongoose.Schema(
     {timestamps:true}
 )
 
-const OrderModel=mongoose.model("Orders",OrderSchema);
+const preOrderModel=mongoose.model("preOrders",preOrderSchema);
 
-export default OrderModel;
+export default preOrderModel;

@@ -2,7 +2,7 @@ import UserModel from "../Models/userModel.js";
 
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-
+import userWalletModel from "../Models/userWalletModel.js";
 import Twilio from "twilio";
 
 const serviceID = "VA07b529d4786c4c749a133ac423b1893f"            
@@ -26,11 +26,17 @@ export const registerUser=async (req,res)=>{
         return res.status(400).json({message:"username already exist"})
     }
      const user= await newUser.save();
-
-     const token=jwt.sign({
-        username:user.email, id:user._id
-     },process.env.JWT_KEY,{expiresIn:'1h'})
-
+     
+     const wallet=userWalletModel({ownerId:user._id})
+        await wallet.save()
+        const token = jwt.sign(
+          {
+            username: user.username,
+            id: user._id,
+          },
+          process.env.JWT_KEY,
+          { expiresIn: "168h" }
+        );
 
 
      res.status(200).json({user,token});
