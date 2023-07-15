@@ -6,6 +6,7 @@ const UserSchema=mongoose.Schema(
             type:String,
             required:true,
         },
+        phone:Number,
         accountType:{
             type:String
         },
@@ -18,6 +19,7 @@ const UserSchema=mongoose.Schema(
         storeUrl:{
             type:Array
         },
+        companyAddress:String,
         password:{
             type:String,
             required:true,
@@ -43,7 +45,9 @@ const UserSchema=mongoose.Schema(
           },
         
         profilePicture:String,
-      
+      state:String,
+      zip:Number,
+      city:String,
         about:String,
         livesin:String,
         worksAt:String,

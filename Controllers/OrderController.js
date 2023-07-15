@@ -470,7 +470,7 @@ if(ataz.length>0){
     const awb=ele.shipping.awb_number
 
    
-    const url= `https://shipment.xpressbees.com/api/shipments2/track/${awb}`
+    const url= `https://shipment.xpressbees.com/api/shipments2/track/${awb}`      
     var options = {
      url: url,
      method: 'GET',

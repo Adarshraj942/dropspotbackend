@@ -194,3 +194,15 @@ export const UnblockUser=async(req,res)=>{
         res.status(500).json(error)
     }
 }
+
+
+export const getconnectedshops=async(req,res)=>{
+    try {
+       const {userId}=req.body 
+       const data=await UserModel.findById(userId)
+       const stores=data.storeUrl
+       res.status(200).json(stores)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
